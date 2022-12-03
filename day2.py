@@ -32,7 +32,25 @@ def part1():
     return total_score
 
 def part2():
-    
+    rounds = []
+    for x in input.split('\n'):
+        rounds.append(x.split(' '))
+
+    total_score = 0
+
+    for round in rounds:
+        them = round[0]
+        us = round[1]
+        them = "ABC".index(them)
+        us = "XYZ".index(us)
+
+        if us == 1: # draw
+            total_score += them + 3 + 1
+        elif us == 2: # win
+            total_score += ((them + 1) % 3) + 6 + 1
+        else: # lose
+            total_score += ((them - 1) % 3) + 1
+
 
     return total_score
 
